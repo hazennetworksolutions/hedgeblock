@@ -150,6 +150,8 @@ mkdir -p $HOME/.hedge/cosmovisor/genesis/bin
 mv $HOME/hedged $HOME/.hedge/cosmovisor/genesis/bin
 sudo ln -sf $HOME/.hedge/cosmovisor/genesis $HOME/.hedge/cosmovisor/current -f
 sudo ln -sf $HOME/.hedge/cosmovisor/current/bin/hedged /usr/local/bin/hedged -f
+rm -rf /usr/lib/libwasmvm.x86_64.so
+sudo wget -P /usr/lib https://github.com/CosmWasm/wasmvm/releases/download/v1.3.0/libwasmvm.x86_64.so
 
 # Create service file
 printGreen "6. Creating service file..." && sleep 1
