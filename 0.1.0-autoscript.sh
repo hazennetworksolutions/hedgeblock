@@ -164,8 +164,8 @@ ExecStart=$(which cosmovisor) run start
 Restart=on-failure
 RestartSec=10
 LimitNOFILE=65535
-Environment="DAEMON_HOME=$HOME/.junction"
-Environment="DAEMON_NAME=junctiond"
+Environment="DAEMON_HOME=$HOME/.hedge"
+Environment="DAEMON_NAME=hedged"
 Environment="UNSAFE_SKIP_BACKUP=true"
 Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:$HOME/.hedge/cosmovisor/current/bin"
 
@@ -180,9 +180,6 @@ sudo systemctl enable hedged
 
 # Initialize the node
 printGreen "7. Initializing the node..."
-hedged config set client chain-id ${HEDGE_CHAIN_ID}
-hedged config set client keyring-backend test
-hedged config set client node tcp://localhost:${HEDGE_PORT}657
 hedged init ${MONIKER} --chain-id ${HEDGE_CHAIN_ID}
 
 # Download genesis and addrbook files
